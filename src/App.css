@@ -1,0 +1,15 @@
+h1,
+p {
+    font-family: Lato;
+}
+
+#root {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 4rem;
+}

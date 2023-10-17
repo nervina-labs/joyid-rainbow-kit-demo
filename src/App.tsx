@@ -23,8 +23,8 @@ const SignMessage = ({ address }: { address?: Hex }) => {
                 address: address!,
             });
             alert(res);
-        } catch (error: any) {
-            alert(error.message);
+        } catch (error) {
+            alert(JSON.stringify(error));
         }
     };
     return address ? (
@@ -60,7 +60,7 @@ const SignMessage = ({ address }: { address?: Hex }) => {
     ) : null;
 };
 
-const SignTransaction = ({ address }: { address?: Hex }) => {
+const SendTransaction = ({ address }: { address?: Hex }) => {
     const [toAddress, setToAddress] = React.useState(
         '0xA6eBeCE9938C3e1757bE3024D2296666d6F8Fc49'
     );
@@ -77,7 +77,7 @@ const SignTransaction = ({ address }: { address?: Hex }) => {
     };
     return address ? (
         <div className="w-full">
-            <h2 className="mb-4 text-lg text-center">Sign Transaction</h2>
+            <h2 className="mb-4 text-lg text-center">Send Transaction</h2>
             <label className="label">To Address:</label>
             <input
                 className="input input-bordered w-full mb-4"
@@ -91,7 +91,7 @@ const SignTransaction = ({ address }: { address?: Hex }) => {
                 onChange={(e) => setAmount(e.target.value)}
             />
             <button className="btn btn-primary" onClick={onSign}>
-                Sign
+                Send
             </button>
             <div className="divider"></div>
         </div>
@@ -102,19 +102,10 @@ export default function App() {
     const { address } = useAccount();
     return (
         <div id="app">
-            {/* {address ? (
-                <>
-                    <h1 className="text-xl mb-4">{`Connected: ${address}`}</h1>
-                    <div className="divider" />
-                </>
-            ) : (
-                <button className="btn btn-primary" onClick={onConnect}>
-                    Connect JoyID
-                </button>
-            )} */}
             <ConnectButton />
+            <div className="divider"></div>
             <SignMessage address={address} />
-            <SignTransaction address={address} />
+            <SendTransaction address={address} />
             <SignTypedData address={address} />
         </div>
     );

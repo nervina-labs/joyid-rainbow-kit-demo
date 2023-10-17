@@ -5,8 +5,8 @@ import {
     connectorsForWallets,
     RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { injectedWallet } from '@rainbow-me/rainbowkit/wallets';
-import { JoyIdWallet } from './rainbow';
+import { JoyIdWallet } from '@joyid/rainbowkit'
+import { injectedWallet, coinbaseWallet } from '@rainbow-me/rainbowkit/wallets';
 import '@rainbow-me/rainbowkit/styles.css';
 
 export const { chains, publicClient } = configureChains(
@@ -18,15 +18,17 @@ const connectors = connectorsForWallets([
     {
         groupName: 'Recommended',
         wallets: [
-            injectedWallet({ chains, shimDisconnect: true }),
             JoyIdWallet({
                 chains,
                 options: {
-                    name: 'JoyID demo',
+                    name: 'JoyID RainbowKit demo',
                     logo: 'https://fav.farm/🆔',
                     joyidAppURL: 'https://testnet.joyid.dev',
                 },
             }),
+            injectedWallet({ chains, shimDisconnect: true }),
+            coinbaseWallet({ chains, appName: 'JoyID Demo' }),
+            // rainbowWallet({ chains, shimDisconnect: true }),
         ],
     },
 ]);

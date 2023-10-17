@@ -9,6 +9,8 @@ p {
     -moz-osx-font-smoothing: grayscale;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     flex-direction: column;
     margin-top: 20px;
     padding: 4rem;

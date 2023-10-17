@@ -72,8 +72,7 @@ const SendTransaction = ({ address }: { address?: Hex }) => {
             value: parseEther(amount),
             account: address,
         });
-        console.log(signedTx);
-        // You can use RPC `eth_sendRawTransaction` to send the `signedTx` to the blockchain.
+        alert(`tx hash: ${signedTx.hash}`)
     };
     return address ? (
         <div className="w-full">
